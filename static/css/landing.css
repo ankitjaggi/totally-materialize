@@ -1,0 +1,71 @@
+.responsive-img {
+	overflow: hidden;
+	opacity: .4;
+	background-repeat: no-repeat;
+    background-position: center top;
+}
+.bg-img {
+	position: absolute;
+}
+
+.card-panel.white {
+    position: fixed;
+    width: 48%;
+    top: 27%;
+    height: auto;
+}
+
+a.lgn {
+	margin-bottom: 1em;
+}
+
+.input-field.col.s12 {
+	margin-top: 4px;
+    margin-bottom: 15px;
+}
+
+input#password {
+	margin-bottom: 0;
+    height: 3em;
+}
+.input-field.col.s12 {
+    margin-top: 0;
+    height: 35px;
+}
+
+p.flow-text {
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.row {
+	margin-bottom: 12px;
+}
+
+.form-bx {
+	margin-top: 10px;
+}
+
+.brdr-right {
+	border-right: 1px solid gainsboro;
+}
+
+body {
+	overflow: hidden;
+}
+
+a.btn.btn-block.btn-social.btn-github.lgn {
+	margin-top: 8px;
+}
+
+.dropdown-content {
+	min-width: 131px;
+}
+
+i.material-icons {
+	margin-left: 1em;
+}
+
+.three-lines {
+	width:6em;
+}
