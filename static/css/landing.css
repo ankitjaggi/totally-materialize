@@ -1,6 +1,6 @@
 .responsive-img {
 	overflow: hidden;
-	opacity: .4;
+	opacity: .5	;
 	background-repeat: no-repeat;
     background-position: center top;
 }
@@ -13,24 +13,26 @@
     width: 48%;
     top: 27%;
     height: auto;
+    left:25%;
 }
 
 a.lgn {
 	margin-bottom: 1em;
 }
 
-.input-field.col.s12 {
-	margin-top: 4px;
-    margin-bottom: 15px;
-}
-
 input#password {
 	margin-bottom: 0;
     height: 3em;
+    margin-top: 9px;
+}
+
+input#email {
+	margin-top: 6px;
 }
 .input-field.col.s12 {
     margin-top: 0;
     height: 35px;
+    margin-bottom: 21px;
 }
 
 p.flow-text {
@@ -55,7 +57,7 @@ body {
 }
 
 a.btn.btn-block.btn-social.btn-github.lgn {
-	margin-top: 8px;
+	margin-top: 22px;
 }
 
 .dropdown-content {
