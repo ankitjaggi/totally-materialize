@@ -11,7 +11,7 @@
 .card-panel.white {
     position: fixed;
     width: 48%;
-    top: 27%;
+    top: 19%;
     height: auto;
     left:25%;
 }
@@ -70,4 +70,17 @@ i.material-icons {
 
 .three-lines {
 	width:6em;
+}
+
+#sign-up-email {
+	cursor: pointer;
+}
+.preloader-wrapper.small.active.wait {
+    margin-left: 9em;
+    bottom: 39px;
+    display: none;
+}
+
+ul#slide-out {
+	background-color: ghostwhite;
 }

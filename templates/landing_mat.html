@@ -1,91 +1,152 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
     <head>
-        <link rel="icon" type="image/ico" href="../logo.ico"/>
+      <link rel="icon" type="image/ico" href="../logo.ico"/>
       <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-        <title>Left-Right-Left-Right</title>
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+      <title>Left-Right-Left-Right</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css" />
     </head>
 
     <body>
-        <nav>
-            <div class="nav-wrapper grey darken-2">
-                <ul id="slide-out" class="side-nav">
-                    <li><a href="#!">Home</a></li>
-                    <li><a href="#!">About</a></li>
-                    <li><a href="#!">People</a></li>
-                    <li><a href="#!">Contact Us</a></li>
-                    <li><a href="#!">Terms</a></li>
-                </ul>
-                <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-        <img class="responsive-img bg-img" src="../static/images/homeBack.jpg">
-        <div class="container">
+      <nav>
+        <div class="nav-wrapper grey darken-2">
+          <ul id="slide-out" class="side-nav">
+            <br><br>
+            <li class="active"><a href="#!">Home</a></li>
+            <li><a href="#!">About</a></li>
+            <li><a href="#!">People</a></li>
+            <li><a href="#!">Contact Us</a></li>
+            <li><a href="#!">Terms</a></li>
+          </ul>
+          <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        </div>
+      </nav>
+      <img class="responsive-img bg-img" src="../static/images/homeBack.jpg">
+      <div class="container">
         <div class="row">
-            <div class="col s4 offset-s2 grid-example">
-                <div class="row">
-                    <div class="col s12 m5">
-                        <div class="card-panel white hoverable">
-                            <div class="row">
-                                <div class="col m6 brdr-right">
-                                <strong>NEW USER?</strong>
-                                    <a class="btn btn-block btn-social btn-github lgn">
-                                        <i class="fa fa-github"></i> Sign Up with Github
-                                    </a>
-                                    <a class="btn btn-block btn-social btn-facebook lgn">
-                                        <i class="fa fa-facebook"></i> Sign Up with Facebook
-                                    </a>
-                                    <a class="btn btn-block btn-social btn-google lgn">
-                                        <i class="fa fa-google"></i> Sign Up with Google
-                                    </a>
-                                    <p class="flow-text"><a href="">Sign Up With Email</a>. By signing up you indicate that you have read and agree to the Terms of Service.</p>
-                                </div>
-                                <div class="col m6">
-                                    <strong>LOGIN USING E-MAIL</strong>
-                                    <div class="row form-bx">
-                                        <form class="col s12">
-                                          <div class="row">
-                                            <div class="input-field col s12">
-                                              <input id="email" type="email" class="validate">
-                                              <label for="email">Email</label>
-                                            </div>
-                                          </div>
-                                          <div class="row">
-                                            <div class="input-field col s12">
-                                              <input id="password" type="password" class="validate">
-                                              <label for="password">Password</label>
-                                            </div>
-                                          </div>
-                                          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                          </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <div class="col s4 offset-s2 grid-example">
+            <div class="row">
+              <div class="col s12 m5">
+                <div class="card-panel white hoverable">
+                  <div class="row">
+                  <!-- Social Buttons -->
+                    <div class="col m6 brdr-right">
+                      <strong>NEW USER?</strong>
+                      <a class="btn btn-block btn-social btn-github lgn">
+                        <i class="fa fa-github"></i> Sign Up with Github
+                      </a>
+                      <a class="btn btn-block btn-social btn-facebook lgn">
+                        <i class="fa fa-facebook"></i> Sign Up with Facebook
+                      </a>
+                      <a class="btn btn-block btn-social btn-google lgn">
+                        <i class="fa fa-google"></i> Sign Up with Google
+                      </a>
+                      <p class="flow-text"><a id="sign-up-email">Sign Up With Email</a>. By signing up you indicate that you have read and agree to the Terms of Service.</p>
                     </div>
+                    <div class="col m6">
+                      <div class="col s12">
+                        <ul class="tabs">
+                          <li class="tab col s3"><a class="active" href="#login">Login</a></li>
+                          <li class="tab col s3"><a href="#register">Register</a></li>
+                        </ul>
+                      </div>
+                      <div id="login" class="col s12">
+                      <div class="row form-bx">
+                        <form class="col s12" id="loginForm">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="email" type="email" class="validate" name ="email" required>
+                              <label for="email">Email</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="password" type="password" class="validate" name="password" required>
+                              <label for="password">Password</label>
+                            </div>
+                          </div>
+                          <button id="login-btn" class="btn waves-effect waves-light login-btn" type="submit" name="action">Submit
+                          </button>
+                          <!-- Loader to show wait time -->
+                        </form>
+                      </div>
+                      </div>
+                      <div id="register" class="col s12">
+                    <div class="row">
+                        <form class="col s12" id="registerForm">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="first_name" type="text" class="validate" name="username" required>
+                              <label for="first_name">Username</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="email" type="email" class="validate" name="email_reg" required>
+                              <label for="email">Email</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="reg_password" type="password" class="validate" name="reg_password" required>
+                              <label for="reg_password">Password</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input id="conf_password" type="password" class="validate" name="conf_password" required>
+                              <label for="conf_password"> Confirm Password</label>
+                            </div>
+                          </div>
+                          <button id="register-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                          </button>
+                        </form>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-        <!-- Scripts -->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-        <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+      </div>
+      <!-- Scripts -->
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+      <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-        <script>
-            // Sweetalert goes here
-            $(".button-collapse").sideNav();
-            $(".dropdown-button").dropdown();
-        </script>
-    </body>
-</html>
+      <script>
+                // Sweetalert goes here
+                $(document).ready(function(){
+                  $(".button-collapse").sideNav();
+                  $(".dropdown-button").dropdown();
+                  $('#sign-up-email').click(function(){
+                    $('ul.tabs').tabs('select_tab', 'register');
+                  })
+                });
+      </script>
+      <script type="text/javascript">
+        window.onload = function () {
+          document.getElementById("conf_password").onchange = validatePassword;
+        }
+        function validatePassword(){
+        var pass2=document.getElementById("reg_password").value;
+        var pass1=document.getElementById("conf_password").value;
+        if(pass1!=pass2)
+          document.getElementById("conf_password").setCustomValidity("Passwords Don't Match");
+        else
+          document.getElementById("conf_password").setCustomValidity('');  
+        //empty string means no validation error
+        }
+      </script>
+            </body>
+            </html>
