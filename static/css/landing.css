@@ -84,3 +84,7 @@ i.material-icons {
 ul#slide-out {
 	background-color: ghostwhite;
 }
+
+form#loginForm {
+    margin-top: 6px;
+}

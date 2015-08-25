@@ -9,14 +9,14 @@
       <!-- CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
+      <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css" />
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
       <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css" />
     </head>
 
     <body>
-      <nav>
+      <nav class="">
         <div class="nav-wrapper grey darken-2">
           <ul id="slide-out" class="side-nav">
             <br><br>
@@ -55,7 +55,7 @@
                       <div class="col s12">
                         <ul class="tabs">
                           <li class="tab col s3"><a class="active" href="#login">Login</a></li>
-                          <li class="tab col s3"><a href="#register">Register</a></li>
+                          <li class="tab col s3"><a href="#register">Signup</a></li>
                         </ul>
                       </div>
                       <div id="login" class="col s12">
@@ -73,7 +73,7 @@
                               <label for="password">Password</label>
                             </div>
                           </div>
-                          <button id="login-btn" class="btn waves-effect waves-light login-btn" type="submit" name="action">Submit
+                          <button id="login-btn" class="btn waves-effect waves-light login-btn" type="button" name="action">Submit
                           </button>
                           <!-- Loader to show wait time -->
                         </form>
@@ -84,7 +84,7 @@
                         <form class="col s12" id="registerForm">
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="first_name" type="text" class="validate" name="username" required>
+                              <input id="first_name" type="text" class="validate" name="username_reg" required>
                               <label for="first_name">Username</label>
                             </div>
                           </div>
@@ -106,7 +106,7 @@
                               <label for="conf_password"> Confirm Password</label>
                             </div>
                           </div>
-                          <button id="register-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                          <button id="register-btn" class="btn waves-effect waves-light" type="button" name="action">Signup
                           </button>
                         </form>
                       </div>
@@ -125,16 +125,16 @@
       <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
       <script>
-                // Sweetalert goes here
-                $(document).ready(function(){
-                  $(".button-collapse").sideNav();
-                  $(".dropdown-button").dropdown();
-                  $('#sign-up-email').click(function(){
-                    $('ul.tabs').tabs('select_tab', 'register');
-                  })
-                });
+        // Sweetalert goes here
+        $(document).ready(function(){
+          $(".button-collapse").sideNav();
+          $(".dropdown-button").dropdown();
+          $('#sign-up-email').click(function(){
+            $('ul.tabs').tabs('select_tab', 'register');
+          })
+        });
       </script>
-      <script type="text/javascript">
+      <script>
         window.onload = function () {
           document.getElementById("conf_password").onchange = validatePassword;
         }
@@ -148,5 +148,24 @@
         //empty string means no validation error
         }
       </script>
-            </body>
-            </html>
+      <script>
+        // AJAX call for Register Submission
+        $(function() {
+          $('#register-btn').click(function() {
+ 
+          $.ajax({
+            url: '/signup',
+            data: $('#registerForm').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+          });
+        });
+      });
+      </script>
+  </body>
+</html>
