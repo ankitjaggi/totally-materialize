@@ -1,31 +1,31 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <link rel="icon" type="image/ico" href="../logo.ico"/>
-      <!-- Meta -->
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-      <title>Left-Right-Left-Right</title>
-      <!-- CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
-      <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css" />
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-      <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    </head>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/ico" href="../logo.ico"/>
+  <!-- Meta -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Left-Right-Left-Right</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.1/bootstrap-social.min.css">
+  <link href="../static/css/progressjs.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
 
-    <body>
-      <nav class="">
-        <div class="nav-wrapper grey darken-2">
-          <ul id="slide-out" class="side-nav">
-            <br><br>
-            <li class="active"><a href="#!">Home</a></li>
-            <li><a href="#!">About</a></li>
-            <li><a href="#!">People</a></li>
-            <li><a href="#!">Contact Us</a></li>
-            <li><a href="#!">Terms</a></li>
-          </ul>
+<body>
+  <nav>
+    <div class="nav-wrapper grey darken-2">
+      <ul id="slide-out" class="side-nav">
+        <br><br>
+        <li class="active"><a href="#!">Home</a></li>
+        <li><a href="#!">About</a></li>
+        <li><a href="#!">People</a></li>
+        <li><a href="#!">Contact Us</a></li>
+        <li><a href="#!">Terms</a></li>
+      </ul>
           <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
         </div>
       </nav>
@@ -35,6 +35,7 @@
           <div class="col s4 offset-s2 grid-example">
             <div class="row">
               <div class="col s12 m5">
+                <p>{{error}}</p>
                 <div class="card-panel white hoverable">
                   <div class="row">
                   <!-- Social Buttons -->
@@ -49,7 +50,7 @@
                       <a class="btn btn-block btn-social btn-google lgn">
                         <i class="fa fa-google"></i> Sign Up with Google
                       </a>
-                      <p class="flow-text"><a id="sign-up-email">Sign Up With Email</a>. By signing up you indicate that you have read and agree to the Terms of Service.</p>
+                      <p class="flow-text"><a id="sign-up-email">Sign Up With Email</a>. By signing up you indicate that you have read and agree to the Terms of Service.</p><br><br><br>
                     </div>
                     <div class="col m6">
                       <div class="col s12">
@@ -60,20 +61,20 @@
                       </div>
                       <div id="login" class="col s12">
                       <div class="row form-bx">
-                        <form class="col s12" id="loginForm">
+                        <form class="col s12" id="loginForm" action="/validateLogin" method="post">
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="email" type="email" class="validate" name ="email" required>
+                              <input id="login_email" type="email" class="validate" name ="login_email" required validate autofocus placeholder = "Enter your email">
                               <label for="email">Email</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="password" type="password" class="validate" name="password" required>
+                              <input id="login_password" type="password" class="validate" name="login_password" required validate placeholder = "Enter your password">
                               <label for="password">Password</label>
                             </div>
                           </div>
-                          <button id="login-btn" class="btn waves-effect waves-light login-btn" type="button" name="action">Submit
+                          <button id="login-btn" class="btn waves-effect waves-light login-btn" type="submit" name="action">Login
                           </button>
                           <!-- Loader to show wait time -->
                         </form>
@@ -81,29 +82,23 @@
                       </div>
                       <div id="register" class="col s12">
                     <div class="row">
-                        <form class="col s12" id="registerForm">
+                        <form class="col s12" id="registerForm" name="registerForm">
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="first_name" type="text" class="validate" name="username_reg" required>
+                              <input id="first_name" type="text" class="validate" name="username_reg" required validate placeholder = "Enter your Name" minlength="4">
                               <label for="first_name">Username</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="email" type="email" class="validate" name="email_reg" required>
-                              <label for="email">Email</label>
+                              <input id="email_reg" type="email" class="validate" name="email_reg" required validate placeholder = "Enter your Email Address">
+                              <label for="email_reg">Email</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="reg_password" type="password" class="validate" name="reg_password" required>
+                              <input id="reg_password" type="password" class="validate" name="reg_password" required validate placeholder = "Enter your password">
                               <label for="reg_password">Password</label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <input id="conf_password" type="password" class="validate" name="conf_password" required>
-                              <label for="conf_password"> Confirm Password</label>
                             </div>
                           </div>
                           <button id="register-btn" class="btn waves-effect waves-light" type="button" name="action">Signup
@@ -115,7 +110,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
@@ -135,37 +130,24 @@
         });
       </script>
       <script>
-        window.onload = function () {
-          document.getElementById("conf_password").onchange = validatePassword;
-        }
-        function validatePassword(){
-        var pass2=document.getElementById("reg_password").value;
-        var pass1=document.getElementById("conf_password").value;
-        if(pass1!=pass2)
-          document.getElementById("conf_password").setCustomValidity("Passwords Don't Match");
-        else
-          document.getElementById("conf_password").setCustomValidity('');  
-        //empty string means no validation error
-        }
-      </script>
-      <script>
-        // AJAX call for Register Submission
-        $(function() {
-          $('#register-btn').click(function() {
- 
-          $.ajax({
-            url: '/signup',
-            data: $('#registerForm').serialize(),
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
+          $('#register-btn').click(function(){
+              $.ajax({
+                      url: '/signup',
+                      data: $('#registerForm').serialize(),
+                      type: 'POST',
+                      success: function(response) {
+                          var success_msg = jQuery.parseJSON(response);
+                          Materialize.toast(success_msg.message, 2000)
+                      },
+                      error: function(error) {
+                          var error_msg = jQuery.parseJSON(error);
+                          Materialize.toast(error_msg.message, 4000)
+                    }
+              });
           });
-        });
-      });
+          $('#loginForm').click(function(){
+
+          });
       </script>
   </body>
 </html>

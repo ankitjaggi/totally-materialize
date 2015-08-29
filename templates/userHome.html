@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="icon" type="image/ico" href="../logo.ico"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="../static/css/landing.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+ 
+<body>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#">Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper grey darken-2">
+      <ul id="slide-out" class="side-nav">
+        <br><br>
+        <li><a href="#!">Home</a></li>
+        <li><a href="#!">About</a></li>
+        <li><a href="#!">People</a></li>
+        <li><a href="#!">Contact Us</a></li>
+        <li><a href="#!">Terms</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <ul class="right">
+        <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons">more_vert</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Search for opponent button -->
+  <button>Do a thing</button>
+    <div id="loading">
+      <span>Hold up...</span>
+    </div>
+    <div id="toast"><span class="big">Nice.</span> <span class="info">You did a thing.</span> <a>Undo it here.</a></div>
+
+
+
+  <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".dropdown-button").dropdown();
+        $('.button-collapse').sideNav({
+          menuWidth: 240, // Default is 240
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        }
+      );
+    });
+    </script>
+    <script type="text/javascript">
+              /* This is all just to start and stop the animation. Technically, the animation itself only uses CSS. */
+        document.querySelector("button").addEventListener("click", function(){activateLoadAnim(false)}, false);
+
+        document.querySelector("a").addEventListener("click", function(){activateLoadAnim(true)}, false);
+
+        function activateLoadAnim(undo){ document.querySelector("#loading").classList.remove("animate");
+          document.querySelector("button").blur();
+          document.querySelector("#loading").classList.add("animate"); document.querySelector("#toast").classList.remove("popped");
+          setTimeout(stopAnim, 5000);
+          if(undo){
+            document.querySelector("#toast .big").textContent = 'Alright.';
+            document.querySelector("#toast .info").textContent = 'We undid that thing.';
+            document.querySelector("#toast a").style.display = "none";
+          }
+          else{
+            document.querySelector("#toast .big").textContent = 'Nice.';
+            document.querySelector("#toast .info").textContent = 'You did a thing.';
+            document.querySelector("#toast a").style.display = "inline";
+          }
+        }
+
+        function stopAnim(){
+          document.querySelector("#loading").classList.remove("animate");
+          document.querySelector("#toast").classList.add("popped");
+          setTimeout(cleanup, 6000);
+        }
+
+        function cleanup(){
+           document.querySelector("#toast").classList.remove("popped");
+        }
+    </script>
+</body>
+</html>

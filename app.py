@@ -24,33 +24,77 @@ def home():
 
 # Connecting the Signup with the database to handle the requests
 @app.route('/signup', methods = ['POST'])
-def signUp():
-	_name = request.form['username_reg']
-	_email = request.form['email_reg']
-	_password = request.form['reg_password']
+def signup():
+	try:
+		_name = request.form['username_reg']
+		_email = request.form['email_reg']
+		_password = request.form['reg_password']
 
-	# validate the form values
-	if _name and _email and _password:
-		return json.dumps({'html':'<span>All fields good !!</span>'})
+		# validate the form values
+		if _name and _email and _password:
+			# return json.dumps({'html':'<span>All fields good !!</span>'})
 
-		# all good. lets call MySQL
+			# all good. lets call MySQL
+			conn = mysql.connect()
+			cursor = conn.cursor()
+			_hashed_password = generate_password_hash(_password)
+			# Call the stored procedure for creating users
+			cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
+			data = cursor.fetchall()
+
+			# if all went well
+			if len(data) is 0:
+				conn.commit()
+				return json.dumps({'message':'User Created Successfully!'})
+			# if error happended
+			else:
+				return json.dumps({'message': (data[0])})
+
+		else:
+			return json.dumps({'message':'<span>Enter the required fields</span>'})
+	except Exception as e:
+		return render_template('error.html', error = str(e))
+	finally:
+		cursor.close()
+		conn.close()
+
+@app.route('/validateLogin', methods = ['POST'])
+def validateLogin():
+	try:
+		_username = request.form['login_email']
+		_password = request.form['login_password']
+
 		conn = mysql.connect()
 		cursor = conn.cursor()
-		_hashed_password = generate_password_hash(_password)
-		# Call the stored procedure for creating users
-		cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
+
+		cursor.callproc('sp_validateLogin', (_username,))
 		data = cursor.fetchall()
 
-		# if all went well
-		if len(data) is 0:
-			conn.commit()
-			return json.dumps({'message':'User Created Successfully!'})
-		# if error happended
+		if len(data) > 0:
+			if check_password_hash(str(data[0][3]), _password):
+				session['user'] = data[0][0]
+				return redirect('/userHome')
+			else:
+				return render_template('error.html', error = "Incorrect Email ID or Password")
 		else:
-			return json.dumps({'error': str(data[0])})
+			return render_template('error.html', error = "Incorrect Email ID or Password")
+	except Exception as e:
+		return render_template('error.html', error = str(e))
+	finally:
+		cursor.close()
+		conn.close()
 
+@app.route('/userHome')
+def userHome():
+	if session.get('user'):
+		return render_template('userHome.html')
 	else:
-		return json.dumps({'html':'<span>Enter the required fields</span>'})
+		return render_template('error.html', error = "Unauthorised Access!.Login or Register.")
+
+@app.route('/logout')
+def logout():
+	session.pop('user',None)
+	return redirect('/')
 
 if __name__ == "__main__":
     app.run(port=80 , debug = True)
