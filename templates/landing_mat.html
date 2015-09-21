@@ -61,7 +61,7 @@
                       </div>
                       <div id="login" class="col s12">
                       <div class="row form-bx">
-                        <form class="col s12" id="loginForm" action="/validateLogin" method="post">
+                        <form class="col s12" id="loginForm">
                           <div class="row">
                             <div class="input-field col s12">
                               <input id="login_email" type="email" class="validate" name ="login_email" required validate autofocus placeholder = "Enter your email">
@@ -101,7 +101,7 @@
                               <label for="reg_password">Password</label>
                             </div>
                           </div>
-                          <button id="register-btn" class="btn waves-effect waves-light" type="button" name="action">Signup
+                          <button id="register-btn" class="btn waves-effect waves-light" type="submit" name="action">Signup
                           </button>
                         </form>
                       </div>
@@ -146,7 +146,20 @@
               });
           });
           $('#loginForm').click(function(){
-
+              $.ajax({
+                      url: '/validateLogin',
+                      data: $('#loginForm').serialize(),
+                      type: 'POST',
+                      success: function(response) {
+                        var login_success_msg = jQuery.parseJSON(response);
+                        Materialize.toast(login_success_msg.message, 2000)
+                        $('#login_password').val("");
+                      },
+                      error: function(error) {
+                        var login_error_msg = jQuery.parseJSON(error);
+                        Materialize.toast(login_error_msg.message, 4000)
+                      }
+              });
           });
       </script>
   </body>

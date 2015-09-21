@@ -64,8 +64,8 @@ a.btn.btn-block.btn-social.btn-github.lgn {
 	min-width: 131px;
 }
 
-i.material-icons {
-	margin-left: 1em;
+i#side-lines {
+  margin-left: 0.6em;
 }
 
 .three-lines {
@@ -130,22 +130,11 @@ form#registerForm {
   }
 }
 
-/* global */
-body {
-  font-family: sans-serif;
-}
-
 /* modifiers */
 
 .big {
   font-weight: 900;
   font-size: 20px;
-}
-
-a {
-  color: orange;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 /* toast styles */
@@ -167,7 +156,7 @@ a {
 }
 
 /* button styles */
-button {
+button#search-button{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -175,7 +164,7 @@ button {
   background: #F88;
   border: none;
   color: white;
-  font-size: 7vw;
+  font-size: 2vw;
   text-transform: uppercase;
   padding: 5px;
   box-shadow: 0 10px 0 0 #FBB;
@@ -183,17 +172,17 @@ button {
   transition: all 0.15s;
 }
 
-button:hover {
+button#search_button:hover {
   transform: translate(-50%, -55%);
   box-shadow: 0 13px 0 0 #FBB;
 }
 
-button:active {
+button#search-button:active {
   transform: translate(-50%, -35%);
   box-shadow: 0 0 0 0 #FBB;
 }
 
-button:focus {
+button#search_button:focus {
   outline: none;
   background: #F44;
 }
@@ -257,3 +246,4 @@ WARNING: Note it's not prefixed! You might want to check the compiled version! *
 #loading.animate {
   transform: translate(0, 0);
 }
+

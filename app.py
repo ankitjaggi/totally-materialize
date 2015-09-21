@@ -64,20 +64,24 @@ def validateLogin():
 		_username = request.form['login_email']
 		_password = request.form['login_password']
 
-		conn = mysql.connect()
-		cursor = conn.cursor()
+		if _username and _password:
 
-		cursor.callproc('sp_validateLogin', (_username,))
-		data = cursor.fetchall()
+			conn = mysql.connect()
+			cursor = conn.cursor()
 
-		if len(data) > 0:
-			if check_password_hash(str(data[0][3]), _password):
-				session['user'] = data[0][0]
-				return redirect('/userHome')
+			cursor.callproc('sp_validateLogin', (_username,))
+			data = cursor.fetchall()
+
+			if len(data) > 0:
+				if check_password_hash(str(data[0][3]), _password):
+					session['user'] = data[0][0]
+					return redirect('/userHome')
+				else:
+					return json.dumps({'message':"Password don't match. Try again"})
 			else:
-				return render_template('error.html', error = "Incorrect Email ID or Password")
+				return json.dumps({'message':'Username either wrong or not registered.'})
 		else:
-			return render_template('error.html', error = "Incorrect Email ID or Password")
+			return json.dumps({'message':'Enter the required fields'})
 	except Exception as e:
 		return render_template('error.html', error = str(e))
 	finally:
